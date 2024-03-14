@@ -8,24 +8,27 @@ class Solution {
         
         Deque<Integer> dq = new LinkedList<>();
         int left=0,right = 0;
-        
-        for(int i = 0; i<nums.length;i++){
+        int i ;
+        for(i= 0; i<k;i++){
             while(!dq.isEmpty() && nums[i] > nums[dq.peekLast()]){
                 dq.removeLast();
             }
             dq.add(i);
+        }
+        
+        for(;i<nums.length;i++){
+            result[t++] = nums[dq.peek()];
             
-            if(left > dq.peek()){
+            while(!dq.isEmpty() && dq.peek() <= i-k){
                 dq.removeFirst();
             }
             
-            if(right + 1 >=k){
-                result[t++] = nums[dq.peek()];
-                left++;
+            while(!dq.isEmpty() && nums[i] > nums[dq.peekLast()]){
+                dq.removeLast();
             }
-            right++;
-            
+            dq.add(i);
         }
+        result[t++] = nums[dq.peek()];
         return result;
     }
 }
