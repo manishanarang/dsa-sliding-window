@@ -2,12 +2,10 @@ class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         if (nums.length == 0 || k == 1)   return nums;
   
-        int windows = nums.length - k + 1;
-        int[] result = new int[windows];
+        int[] result = new int[nums.length - k + 1];
         int t = 0;
         
         Deque<Integer> dq = new LinkedList<>();
-        int left=0,right = 0;
         int i ;
         for(i= 0; i<k;i++){
             while(!dq.isEmpty() && nums[i] > nums[dq.peekLast()]){
