@@ -21,10 +21,7 @@ class Solution {
             }
             stack.push(nums[i]);
         }
-        
-        while(!stack.isEmpty()){
-            ngeMap.put(stack.pop(), -1);
-        }
+    
         return ngeMap;
     }
 }
